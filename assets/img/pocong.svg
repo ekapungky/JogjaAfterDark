@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="none"/>
+  <g filter="url(#glow)">
+    <path d="M400 80 C320 130 275 240 290 390 C305 555 318 705 400 760 C482 705 495 555 510 390 C525 240 480 130 400 80 Z" fill="#e8ffee"/>
+    <path d="M315 190 C385 235 430 235 485 190" stroke="#46664d" stroke-width="14" fill="none" opacity=".55"/>
+    <path d="M315 465 C385 515 440 515 485 465" stroke="#46664d" stroke-width="16" fill="none" opacity=".75"/>
+    <ellipse cx="400" cy="270" rx="92" ry="115" fill="#effff0"/>
+    <circle cx="365" cy="272" r="21" fill="#0a0003"/>
+    <circle cx="435" cy="272" r="21" fill="#0a0003"/>
+    <circle cx="365" cy="272" r="9" fill="#ff0037"/>
+    <circle cx="435" cy="272" r="9" fill="#ff0037"/>
+    <ellipse cx="400" cy="340" rx="25" ry="35" fill="#030003"/>
+  </g>
+  <defs><filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="#a6ffb5"/><feDropShadow dx="0" dy="0" stdDeviation="36" flood-color="#ff0037"/></filter></defs>
+</svg>
