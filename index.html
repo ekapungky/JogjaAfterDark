@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Jogja After Dark V14 | OSM Real Footprint</title>
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="map"></div>
+<div class="vignette"></div>
+<div id="toast">Memuat data bangunan OSM...</div>
+
+<aside class="panel hero">
+  <h1>Jogja After Dark</h1>
+  <p>Gedung 3D memakai <b>footprint asli OpenStreetMap</b>. Tinggi dibaca dari <code>height</code> atau <code>building:levels</code>.</p>
+  <div class="chips"><span>Real OSM Footprint</span><span>3D Extrusion</span><span>Urban Legend</span></div>
+</aside>
+
+<aside class="panel control">
+  <h2>Control Center</h2>
+  <div class="stats">
+    <div><b id="buildingCount">0</b><span>bangunan OSM</span></div>
+    <div><b id="heightCount">0</b><span>punya height/levels</span></div>
+    <div><b id="avgHeight">0 m</b><span>rata-rata tinggi</span></div>
+    <div><b id="legendCount">10</b><span>urban legend</span></div>
+    <div><b id="relicCount">0/5</b><span>relik</span></div>
+    <div><b id="gameStatus">OFF</b><span>mini game</span></div>
+  </div>
+
+  <h3>Layer</h3>
+  <label><input id="toggleBuildings" type="checkbox" checked> Gedung OSM 3D</label>
+  <label><input id="toggleLegend" type="checkbox" checked> Urban Legend</label>
+  <label><input id="toggleRisk" type="checkbox" checked> Zona Risiko</label>
+  <label><input id="toggleSafe" type="checkbox" checked> Safe Zone</label>
+  <label><input id="toggleRoute" type="checkbox" checked> Rute Horor</label>
+  <label><input id="toggleRelic" type="checkbox" checked> Relik / Mini Game</label>
+
+  <h3>Mini Game</h3>
+  <button id="startRelic">📿 Mulai Relic Hunt</button>
+  <button id="resetRelic">↻ Reset Relik</button>
+
+  <h3>OSM Buildings</h3>
+  <button id="reload">🔄 Ambil Ulang Footprint OSM</button>
+  <button id="focus3d">🏙️ Mode 3D Dekat</button>
+  <button id="night">🌑 Mode Malam Jumat</button>
+
+  <h3>Sound</h3>
+  <button id="ambience">🔊 Ambience</button>
+  <button id="stopAudio">⏹ Stop Audio</button>
+</aside>
+
+<aside class="panel info">
+  <h2 id="infoTitle">Info Lokasi</h2>
+  <div id="infoBody">Klik gedung 3D atau titik urban legend.</div>
+</aside>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="data/urban.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
