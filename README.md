@@ -1,55 +1,76 @@
-# Jogja After Dark: 3D Haunted City Experience
+# Jogja After Dark: 3D Haunted City Experience — V8 Fixed
 
-Prototype WebGIS untuk final project SIG Terapan.
+Prototype WebGIS interaktif untuk tema urban legend Jogja.
 
-## Isi revisi
-- Lokasi studi dibatasi menjadi 5 zona sesuai tabel:
-  1. Zona 1 — Keraton Ngayogyakarta Hadiningrat
-  2. Zona 2 — Taman Sari (Water Castle)
-  3. Zona 3 — Kota Gede (Makam Raja)
-  4. Zona 4 — Jalan Malioboro – Alun-Alun
-  5. Zona 5 — Gua Selarong & Bukit Sekitar
-- Target hasil akhir dimasukkan ke panel web:
-  - WebGIS 3D Interaktif
-  - Model 3D Kota
-  - Story Map / Narasi Urban Legend
-  - Mini Game / Survival Mode
-  - Infografis & Video
-  - Laporan & Tutorial
-
-## Struktur folder
-```text
-assets/
-  audio/user/
-  img/
-css/
-  style.css
-data/
-  layers.js
-  points.js
-js/
-  app.js
-index.html
-README.md
-RUN_LOCAL_SERVER.bat
-SUMBER_URBAN_LEGEND_DAN_CATATAN.md
-TUTORIAL_DEMO_PRESENTASI.md
-```
-
-## Cara buka lokal
-Klik `RUN_LOCAL_SERVER.bat`, lalu buka alamat yang muncul. Alternatif:
-```bash
-python -m http.server 5500
-```
-
-## Cara upload ke GitHub Pages
+## Cara menjalankan
 1. Extract ZIP.
-2. Upload semua isi folder ke repository GitHub.
-3. Pastikan `index.html` ada di root repository, bukan di dalam folder tambahan.
-4. Masuk ke Settings → Pages.
-5. Source: Deploy from branch.
-6. Branch: `main`, folder `/root`.
-7. Tunggu link GitHub Pages aktif.
+2. Buka folder project.
+3. Double click `RUN_LOCAL_SERVER.bat` atau jalankan terminal:
 
-## Catatan akademik
-Koordinat masih prototype. Untuk versi final, validasi titik zona di QGIS/OSM, lalu update `data/points.js`.
+```bash
+python -m http.server 8000
+```
+
+4. Buka browser:
+
+```text
+http://localhost:8000
+```
+
+Jangan buka langsung `index.html` dengan file:// karena audio, fetch rute OSM, dan beberapa asset bisa tidak stabil.
+
+## Fitur utama V8
+- 3D WebGIS berbasis MapLibre GL.
+- Ikon urban legend Jogja.
+- Rute memakai OSRM/OpenStreetMap jika internet/API tersedia.
+- Fallback route lokal jika OSRM gagal.
+- Zona rawan horor dan zona aman.
+- Mini game Relik Kutukan.
+- Danger Meter.
+- Jumpscare otomatis, bukan hanya tombol manual.
+- Soundtrack horor dari file audio yang diupload.
+- Visual jumpscare SVG: Kuntilanak, Pocong, Genderuwo.
+- Tombol panik untuk mematikan semua efek.
+
+## Trigger jumpscare otomatis
+Jumpscare akan muncul saat:
+- asal klik peta 3 kali saat mini game aktif;
+- klik jebakan mata merah;
+- Danger Meter mencapai 100%;
+- pointer terlalu lama di zona merah saat mini game aktif;
+- menyelesaikan semua relik;
+- kadang muncul setelah terlalu lama idle pada mini game.
+
+## Catatan presentasi
+Untuk demo yang aman:
+1. Klik `Masuk ke Kota Gelap`.
+2. Klik `Malam Jumat Kliwon`.
+3. Klik `Mulai Mini Game Relik`.
+4. Suruh teman/audience cari relik.
+5. Biarkan mereka salah klik / klik mata merah supaya jumpscare otomatis muncul.
+6. Kalau terlalu ramai, tekan `Matikan Semua Efek`.
+
+## Ganti gambar jumpscare
+File ada di:
+
+```text
+assets/img/kunti.svg
+assets/img/pocong.svg
+assets/img/genderuwo.svg
+```
+
+Bisa diganti dengan PNG/JPG sendiri, lalu ubah path di `js/app.js` bagian `CREATURES`.
+
+
+## Perbaikan V9
+- Mini game distabilkan: tidak bisa start ganda, jumlah trap dikurangi, marker relik/trap dipisah agar tidak tumpang tindih.
+- Jumpscare diubah jadi **critical-only**, jadi tidak spam saat klik lokasi biasa.
+- Gambar jumpscare kuntilanak diganti versi yang lebih sinematik agar cocok dengan nuansa WebGIS.
+- Audio ketawa kuntilanak memakai file upload pengguna.
+
+
+## Perbaikan V10
+- Tombol Malam Jumat dibuat ulang: sekarang hanya toggle visual/audio ambience, tidak memicu jumpscare dan tidak mengacaukan mini game.
+- Mini game distabilkan lagi: start tidak dobel, trap dikurangi menjadi 2, wrong-click threshold dinaikkan, dan jumpscare hanya fase kritis.
+- Visual 3D diperkuat: ada landmark 3D heritage, beacon/kolom hantu 3D, bangunan kota deterministik lebih tinggi, dan tombol Mode 3D Dekat.
+- Gambar jumpscare kuntilanak + suara ketawa upload pengguna tetap dipakai.

@@ -1,26 +1,25 @@
 # Tutorial Demo Presentasi
 
-1. Buka `index.html` melalui local server.
-2. Klik `Masuk ke Kota Gelap`.
-3. Tunjukkan panel `Lokasi Studi dan Data`, lalu jelaskan 5 zona:
-   - Keraton Ngayogyakarta Hadiningrat
-   - Taman Sari
-   - Kota Gede
-   - Jalan Malioboro – Alun-Alun
-   - Gua Selarong & Bukit Sekitar
-4. Klik marker pada peta.
-5. Jelaskan isi panel `Info Lokasi`:
-   - tema zona,
-   - narasi urban legend,
-   - suara/ambience,
-   - fungsi pada WebGIS.
-6. Tunjukkan panel `Target Hasil Akhir`.
-7. Aktifkan layer:
-   - Model 3D / kolom zona,
-   - zona studi,
-   - zona rawan,
-   - zona aman,
-   - rute horor.
-8. Klik `Mode 3D Dekat`.
-9. Klik `Mulai Mini Game Relik`, lalu kumpulkan 5 relik.
-10. Tutup demo dengan menjelaskan bahwa pengembangan lanjut memerlukan validasi koordinat, foto lapangan, dan model 3D GLTF.
+## Alur demo 3 menit
+
+1. Buka web lewat localhost.
+2. Klik **Masuk ke Kota Gelap** supaya audio aktif.
+3. Jelaskan bahwa ini adalah WebGIS 3D wisata horor berbasis urban legend dan analisis spasial.
+4. Klik salah satu lokasi, misalnya **Tamansari**.
+5. Jelaskan panel lokasi: cerita urban legend, analisis spasial, dan safety route.
+6. Klik **Reload Rute OSM** untuk menunjukkan rute mengikuti jalan OSM.
+7. Klik **Malam Jumat Kliwon** dan **Ghost Hunt Mode**.
+8. Klik **Mulai Mini Game Relik**.
+9. Cari relik. Untuk membuat jumpscare, klik area kosong 3 kali atau klik ikon mata merah.
+10. Akhiri dengan tombol **Matikan Semua Efek**.
+
+## Kalimat penjelasan analisis spasial
+
+> WebGIS ini tidak hanya menampilkan titik urban legend, tetapi juga menggabungkan 3D building visualization, route analysis berbasis OSM, zona rawan, zona aman, fasilitas darurat, dan simulasi interaktif danger meter untuk mendukung konsep wisata horor yang tetap memperhatikan keamanan rute.
+
+## Troubleshooting
+
+- Audio tidak bunyi: klik tombol **Masuk ke Kota Gelap** dulu.
+- Peta tidak muncul: pastikan internet aktif.
+- Rute OSM gagal: sistem otomatis pakai fallback route lokal.
+- Efek terlalu ramai: klik **Matikan Semua Efek**.

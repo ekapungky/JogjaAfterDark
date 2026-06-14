@@ -12,12 +12,12 @@
 
   <section id="introGate" class="intro-gate">
     <div class="intro-card">
-      <div class="status-pill">FINAL PROTOTYPE · 5 ZONA STUDI · 6 OUTPUT TARGET</div>
-      <h1>Jogja After Dark</h1>
+      <div class="status-pill">WARNING: horror ambience + jumpscare</div>
+      <h1>JOGJA AFTER DARK</h1>
       <h2>3D Haunted City Experience</h2>
-      <p>Smart Tourism berbasis 3D GIS dan Urban Storytelling. Web ini memakai 5 lokasi inti: Keraton, Taman Sari, Kota Gede, Jalan Malioboro–Alun-Alun, serta Gua Selarong & Bukit Sekitar.</p>
+      <p>WebGIS 3D urban legend Jogja dengan rute berbasis OSM/fallback, arsip legenda, zona aman-rawan, haunted index, ambience horor, dan game relik yang lebih stabil.</p>
       <button id="enterBtn" class="primary-btn">Masuk ke Kota Gelap</button>
-      <small>Audio browser aktif setelah tombol diklik. Cocok untuk demo GitHub Pages.</small>
+      <small>Audio browser baru aktif setelah tombol ini diklik. Untuk demo, gunakan speaker/headset.</small>
     </div>
   </section>
 
@@ -25,36 +25,25 @@
   <div class="vignette"></div>
   <div id="fogLayer" class="fog-layer"></div>
   <div id="flashLayer" class="flash-layer"></div>
-  <div id="bloodText" class="blood-text">JANGAN KELUAR DARI RUTE</div>
+  <div id="lightning" class="lightning"></div>
+  <div id="torch" class="torch hidden"></div>
+  <div id="bloodText" class="blood-text">JANGAN ASAL KLIK</div>
 
   <div id="jumpscareOverlay" class="jumpscare-overlay hidden" aria-hidden="true">
     <img id="jumpscareImage" src="assets/img/kunti-webgis.png" alt="jumpscare" />
-    <div id="jumpscareCaption" class="jumpscare-caption">JOGJA AFTER DARK</div>
+    <div id="jumpscareCaption" class="jumpscare-caption">KUNTILANAK</div>
   </div>
 
   <aside id="heroPanel" class="panel hero-panel draggable">
     <div class="drag-handle">☰ Jogja After Dark</div>
     <h1>3D Haunted City Experience</h1>
-    <p>WebGIS interaktif dengan 5 zona studi, rute horor, zona aman-rawan, haunted index, story map, dan mini game relik.</p>
-    <div class="chips">
-      <span>3D GIS</span><span>Urban Storytelling</span><span>Smart Tourism</span><span>Survival Mode</span>
-    </div>
-  </aside>
-
-  <aside id="zonePanel" class="panel zone-panel draggable">
-    <div class="drag-handle">☰ Lokasi Studi dan Data</div>
-    <table class="data-table" id="zoneTable">
-      <thead>
-        <tr><th>Zona</th><th>Lokasi</th><th>Legenda / Tema</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <p class="note">Titik koordinat bersifat prototype dan bisa diganti dengan titik hasil digitasi/QGIS.</p>
+    <p>WebGIS interaktif: urban legend, analisis spasial, zona aman-rawan, rute OSM/fallback, dan visualisasi 3D.</p>
+    <div class="chips"><span>3D GIS</span><span>Urban Legend</span><span>Risk Zone</span><span>Storytelling</span></div>
   </aside>
 
   <aside id="legendPanel" class="panel legend-panel draggable">
     <div class="drag-handle">☰ Arsip Urban Legend</div>
-    <input id="searchInput" placeholder="Cari: Keraton, Tamansari, Kotagede, Malioboro, Selarong..." />
+    <input id="searchInput" placeholder="Cari ikon: Tamansari, Keraton, Tugu..." />
     <div id="legendItems"></div>
   </aside>
 
@@ -64,12 +53,12 @@
     <div class="scenario-box">
       <span>SKENARIO AKTIF</span>
       <h2 id="scenarioTitle">Mode Jelajah Horor</h2>
-      <p id="scenarioText">Klik zona, baca narasi, ikuti rute, lalu kumpulkan relik saat survival mode aktif.</p>
+      <p id="scenarioText">Klik lokasi urban legend, ikuti rute, dan jangan terlalu sering asal klik.</p>
     </div>
 
     <div class="metric-grid">
-      <div class="metric"><b id="mZone">5</b><span>zona</span></div>
-      <div class="metric"><b id="mOutput">6</b><span>output</span></div>
+      <div class="metric"><b id="mLegend">10</b><span>ikon</span></div>
+      <div class="metric"><b id="mRoute">OSM</b><span>rute</span></div>
       <div class="metric"><b id="mRelic">0/5</b><span>relik</span></div>
       <div class="metric"><b id="mSanity">100</b><span>sanity</span></div>
     </div>
@@ -77,17 +66,16 @@
     <div class="danger-wrap">
       <div class="danger-head"><b>Danger Meter</b><span id="dangerText">0%</span></div>
       <div class="danger-bar"><div id="dangerFill"></div></div>
-      <small>Naik saat masuk zona rawan, klik kosong berulang, atau terkena jebakan.</small>
+      <small>Naik saat game aktif, klik kosong berulang, masuk zona merah, atau terkena jebakan.</small>
     </div>
 
-    <h3>Layer WebGIS</h3>
-    <label><input type="checkbox" id="layer3d" checked /> Model 3D / kolom zona</label>
-    <label><input type="checkbox" id="layerZones" checked /> Zona studi</label>
-    <label><input type="checkbox" id="layerRisk" checked /> Zona rawan</label>
-    <label><input type="checkbox" id="layerSafe" checked /> Zona aman</label>
-    <label><input type="checkbox" id="layerRoutes" checked /> Rute horor</label>
-    <label><input type="checkbox" id="layerMarkers" checked /> Marker urban legend</label>
-    <label><input type="checkbox" id="layerGame" checked /> Relik & jebakan</label>
+    <h3>Layer</h3>
+    <label><input type="checkbox" id="layerBuildings" checked /> Bangunan 3D + Landmark</label>
+    <label><input type="checkbox" id="layerHaunted" checked /> Ikon Urban Legend</label>
+    <label><input type="checkbox" id="layerRisk" checked /> Zona Rawan Horor</label>
+    <label><input type="checkbox" id="layerSafe" checked /> Zona Aman</label>
+    <label><input type="checkbox" id="layerRoutes" checked /> Rute OSM/Fallback</label>
+    <label><input type="checkbox" id="layerFacilities" checked /> Fasilitas Darurat</label>
 
     <h3>Filter Haunted Index</h3>
     <input id="hauntedSlider" type="range" min="0" max="100" value="0" />
@@ -98,49 +86,51 @@
     <button id="ghostHuntBtn" class="purple-btn">🔦 Ghost Hunt Mode</button>
     <button id="miniGameBtn" class="green-btn">🎮 Mulai Mini Game Relik</button>
     <button id="view3dBtn" class="blue-btn">🏙️ Mode 3D Dekat</button>
-    <button id="resetBtn" class="dark-btn">↻ Reset Kamera</button>
+    <button id="osmRouteBtn" class="blue-btn">🛣️ Reload Rute OSM</button>
 
     <h3>Soundtrack</h3>
     <div class="audio-grid">
       <button data-track="ambience" class="audio-btn">🌫️ Ambience</button>
-      <button data-track="whisper" class="audio-btn">🗣️ Whisper</button>
-      <button data-track="thunder" class="audio-btn">⛈️ Thunder</button>
+      <button data-track="wind" class="audio-btn">💨 Angin</button>
+      <button data-track="radio" class="audio-btn">📻 Radio</button>
       <button data-track="heartbeat" class="audio-btn">🫀 Heartbeat</button>
-      <button id="muteBtn" class="dark-btn full">🔊 Mute / Unmute</button>
-      <button id="panicBtn" class="dark-btn full">🧯 Matikan Efek</button>
+      <button id="stopTrackBtn" class="dark-btn full">⏹ Stop Soundtrack</button>
     </div>
-  </aside>
 
-  <aside id="outputPanel" class="panel output-panel draggable">
-    <div class="drag-handle">☰ Target Hasil Akhir</div>
-    <table class="data-table output-table" id="outputTable">
-      <thead>
-        <tr><th>Output</th><th>Deskripsi / Fungsi</th><th>Format / Media</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <details class="test-box">
+      <summary>Test efek opsional</summary>
+      <button data-creature="kunti" class="test-scare">👻 Test Kunti</button>
+      <button data-creature="pocong" class="test-scare">🧟 Test Pocong</button>
+      <button data-creature="genderuwo" class="test-scare">👹 Test Genderuwo</button>
+    </details>
+
+    <h3>Kontrol Aman</h3>
+    <button id="muteBtn" class="dark-btn">🔊 Mute / Unmute</button>
+    <button id="panicBtn" class="dark-btn">🧯 Matikan Semua Efek</button>
+    <button id="resetBtn" class="dark-btn">↻ Reset Kamera</button>
   </aside>
 
   <aside id="infoPanel" class="panel info-panel draggable">
     <div class="drag-handle">☰ Info Lokasi</div>
     <div id="infoContent">
-      <h2>Pilih salah satu zona</h2>
-      <p>Klik marker di peta atau kartu pada Arsip Urban Legend. Panel ini akan menampilkan tema, cerita, suara, dan fungsi zona pada WebGIS.</p>
+      <h2>Belum ada lokasi dipilih</h2>
+      <p>Klik ikon urban legend. Setiap lokasi punya cerita, analisis spasial, efek audio, dan potensi momen kritis yang bisa memicu jumpscare.</p>
     </div>
   </aside>
 
   <div id="gamePanel" class="game-panel hidden">
     <b>🎮 MINI GAME: RELIK KUTUKAN</b>
-    <p>Kumpulkan 5 relik, satu relik untuk setiap zona studi.</p>
+    <p>Cari 5 relik emas. Cari 5 relik emas. Jumpscare hanya muncul saat momen kritis: danger penuh atau jebakan fase akhir.</p>
     <div class="progress"><div id="gameProgress"></div></div>
     <span id="gameStatus">Relik: 0/5</span>
   </div>
 
   <div class="map-legend">
-    <div><span class="dot high"></span>Zona risiko tinggi</div>
-    <div><span class="dot medium"></span>Zona risiko sedang</div>
-    <div><span class="line route"></span>Rute horor</div>
-    <div>🏙️ Kolom 3D = haunted index</div>
+    <div><span class="dot high"></span>Zona rawan</div>
+    <div><span class="dot safe"></span>Zona aman</div>
+    <div><span class="line route"></span>Rute OSM</div>
+    <div>🏙️ Landmark 3D / kolom hantu</div>
+    <div>👻 Urban legend</div>
     <div>📿 Relik / 👁️ Jebakan</div>
   </div>
 
